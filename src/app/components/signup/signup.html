@@ -1,0 +1,50 @@
+<div class="col-8 mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h3>SignUp Here</h3>
+        </div>
+        <div class="card-body">
+            <div class="mb-1">
+                <a [routerLink]="['/todos']" class="btn btn-primary btn-sm">Back</a>
+            </div>
+            <form #registrationform="ngForm" (ngSubmit)="SignUpUser()">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="name" name="name" [(ngModel)] = "forms.name" required>
+
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" [(ngModel)] = "forms.email" required #emailCtrl="ngModel" email>
+                </div>
+
+                @if (emailCtrl.invalid && emailCtrl.touched) {
+                <div class="text-danger mt-1">Please enter a valid email address.</div>
+                }
+
+                <!-- Password -->
+                <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password"
+                        [(ngModel)]="forms.password" required minlength="6">
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="mb-3">
+                <label for="password_confirmation" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
+                        [(ngModel)]="forms.password_confirmation" required>
+                </div>
+
+                <!-- Error Message -->
+                @if (error) {
+                <div class="alert alert-danger mt-2">
+                    <span>{{ error }}</span>
+                </div>
+                }
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

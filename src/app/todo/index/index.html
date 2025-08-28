@@ -1,0 +1,40 @@
+<div class="card mt-5">
+    <h3 class="card-header">To do List</h3>
+    <div class="card-body"> <div class="mb-1"> 
+        <a [routerLink]="['/todos/create']" class="btn btn-success btn-sm mt-2 mb-4">Create New Task</a> 
+    </div> 
+        <table class="table table-bordered table-striped"> 
+            <thead> 
+                <tr> 
+                    <th scope="col">Title</th> 
+                    <th scope="col">date</th> 
+                    <th scope="col">Status</th> 
+                    <th scope="col">Actions</th> 
+                </tr> 
+            </thead> 
+            <tbody> 
+                @for (todo of todos; track todo.id) 
+                { 
+                    <tr> 
+                        <td>{{ todo.title }}</td> 
+                        <td>{{ todo.creation_date }}</td> 
+                        <td> 
+                            <label class="switch">
+                                <input 
+                                    type="checkbox"
+                                    [checked] = "todo.status"
+                                    (change) = "toggleStatus(todo)"
+                                />
+                                <span class="slider round"></span>
+                            </label>
+                        </td> 
+                        <td> 
+                            <a [routerLink] = "['/todos', todo.id, 'edit']" class="btn btn-primary btn-sm me-3 ps-3 pe-3">Edit</a> 
+                            <button (click)="deletePost(todo.id)" class="btn btn-danger btn-sm">Delete</button> 
+                        </td> 
+                    </tr> 
+                } 
+            </tbody> 
+        </table> 
+    </div> 
+</div>

@@ -1,0 +1,13 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Home</a>
+    <div>
+      <!-- Show only if NOT logged in -->
+      <a *ngIf="!isLoggedIn()" class="navbar-brand" routerLink="/login">Login</a>
+      <a *ngIf="!isLoggedIn()" class="navbar-brand" routerLink="/signup">Signup</a>
+
+      <!-- Show only if logged in -->
+      <a *ngIf="isLoggedIn()" class="navbar-brand" (click)="logout()">Logout</a>
+    </div>
+  </div>
+</nav>

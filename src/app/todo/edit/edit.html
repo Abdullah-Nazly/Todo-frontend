@@ -1,0 +1,32 @@
+
+<div class="card mt-5">
+    <h3 class="card-header">Update Task</h3>
+    <div class="card-body">
+        <div class="mb-1">
+            <a
+            [routerLink]="['/todos']"
+             class="btn btn-primary btn-sm">Back</a>
+        </div>
+        <form (ngSubmit) = "submit()">
+            <div class="mt-2">
+                <label for="title" class="form-label">Title</label>
+                <input [(ngModel)] = "title" name="title" type="text" class="form-control" placeholder="Enter title">
+            </div>
+            <div class="mt-2">
+                <label for="creation_date" class="form-label">Date</label>
+                <input [(ngModel)]="creation_date" 
+                        name="creation_date" 
+                        type="date" 
+                        class="form-control">
+            </div>
+            @if(error) {
+                <div class="alert alert-danger mt-2">
+                    <span>{{ error }}</span>
+                </div>
+            }
+            <div class="mt-2">
+                <button type="submit" class="btn btn-success">Update Task</button>
+            </div>
+        </form>
+    </div>
+</div>

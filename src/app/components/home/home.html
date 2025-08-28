@@ -1,0 +1,17 @@
+<!-- home.html -->
+<div class="text-center mt-5">
+  <h1>Welcome to the Todo Application</h1>
+  <p>Manage your tasks efficiently with our app!</p>
+  
+  <!-- Only show "Go to Todos" if user is logged in -->
+  <div *ngIf="isLoggedIn()">
+    <p>Hello, {{ userName }}</p>
+    <a routerLink="/todos" class="btn btn-primary">Go to Task</a>
+  </div>
+
+  <!-- Optional: show login/signup buttons if not logged in -->
+  <div *ngIf="!isLoggedIn()">
+    <a routerLink="/login" class="btn btn-outline-primary me-2">Login</a>
+    <a routerLink="/signup" class="btn btn-outline-success">Signup</a>
+  </div>
+</div>
