@@ -27,7 +27,7 @@ export class User {
     return this.http.post( this.apiUrl + '/signup' , data);
   }
 
-  Login(data: any) {
+  Login(data: any): Observable<any> {
     return this.http.post( this.apiUrl + '/login' , data);
   }
 

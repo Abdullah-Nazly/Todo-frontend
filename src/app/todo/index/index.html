@@ -7,7 +7,8 @@
             <thead> 
                 <tr> 
                     <th scope="col">Title</th> 
-                    <th scope="col">date</th> 
+                    <th scope="col">Created date</th>
+                    <th scope="col">Updated date</th>
                     <th scope="col">Status</th> 
                     <th scope="col">Actions</th> 
                 </tr> 
@@ -17,7 +18,8 @@
                 { 
                     <tr> 
                         <td>{{ todo.title }}</td> 
-                        <td>{{ todo.creation_date }}</td> 
+                        <td>{{ todo.creation_date | date:'short' }}</td>
+                        <td>{{ todo.updated_date | date:'short' }}</td>
                         <td> 
                             <label class="switch">
                                 <input 

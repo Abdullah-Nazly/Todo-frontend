@@ -55,7 +55,7 @@ export class Token {
   // Now these work because http is injected
 
   getTodos() {
-  return this.http.get('/api/todos');  // No need to manually add token
+    return this.http.get('/api/todos');
   }
 
   createTodo(todo: any) {

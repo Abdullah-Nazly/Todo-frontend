@@ -11,22 +11,25 @@ import { Todo } from '../todo';
   templateUrl: './create.html',
   styleUrl: './create.scss'
 })
-
-
 export class Create {
 
   title = '';
   currentDate: string = '';
+  updated_date = '';
   error = '';
 
-  constructor(private todoService: TodoService, private route:Router) { }
+  constructor(private todoService: TodoService, private route: Router) { }
 
   ngOnInit() {
-    // set today's date in yyyy-MM-dd format (HTML date input requires this)
     const today = new Date();
-    this.currentDate = today.toISOString().split('T')[0];
+    // optional: display-friendly format in HTML if needed
+    this.currentDate = today.toISOString().slice(0, 19).replace('T', ' ');
   }
 
+  // helper method to format dates as MySQL TIMESTAMP
+  private formatDateTimeForMySQL(date: Date): string {
+    return date.toISOString().slice(0, 19).replace('T', ' ');
+  }
 
   submit() {
 
@@ -35,10 +38,12 @@ export class Create {
       return;
     }
 
+    const now = new Date();
+
     const input: Todo = {
       id: 0,
       title: this.title,
-      creation_date: this.currentDate,
+      creation_date: this.formatDateTimeForMySQL(now), // ✅ MySQL format
       status: false
     };
 

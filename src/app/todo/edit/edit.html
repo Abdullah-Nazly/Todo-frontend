@@ -13,11 +13,12 @@
                 <input [(ngModel)] = "title" name="title" type="text" class="form-control" placeholder="Enter title">
             </div>
             <div class="mt-2">
-                <label for="creation_date" class="form-label">Date</label>
+                <label for="update_date" class="form-label">Date</label>
                 <input [(ngModel)]="creation_date" 
-                        name="creation_date" 
+                        name="update_date" 
                         type="date" 
-                        class="form-control">
+                        class="form-control"
+                        readonly>
             </div>
             @if(error) {
                 <div class="alert alert-danger mt-2">

@@ -18,6 +18,7 @@ export class Edit {
   id!: string;  
   title = '';
   creation_date = '';  // keep it, but readonly
+  updated_date = '';  // will be set automatically
   status = false;
   error = '';
 
@@ -48,6 +49,7 @@ export class Edit {
       id: Number(this.id),               // ✅ use the route param
       title: this.title,
       creation_date: this.creation_date, // ✅ keep original date
+      updated_date: new Date().toISOString().split('T')[0],
       status: this.status
     };
 
